@@ -6,25 +6,26 @@ class sw(object):
 
     def __init__(self):
 
-        self.__Positions = []
-        self.__Gbest = []
+        self.positions = []
+        self.gbest = []
 
-    def _set_Gbest(self, Gbest):
-        self.__Gbest = Gbest
+    def set_gbest(self, gbest):
+        self.gbest = gbest
 
-    def _points(self, agents):
-        self.__Positions.append([list(i) for i in agents])
+    def points(self, agents):
+        self.positions.append([list(i) for i in agents])
 
     def get_agents(self):
-        """Returns a history of all agents of the algorithm (return type:
-        list)"""
+        """
+            Returns list berisi history semua agents
+        """
+        return self.positions
 
-        return self.__Positions
-
-    def get_Gbest(self):
-        """Return the best position of algorithm (return type: list)"""
-
-        return list(self.__Gbest)
+    def get_gbest(self):
+        """
+            Return list the best position 
+        """
+        return list(self.gbest)
 
 class ba(sw):
     """
@@ -55,44 +56,46 @@ class ba(sw):
 
         r = [r0 for i in range(n)]
 
-        self.__agents = np.random.uniform(lb, ub, (n, dimension))
-        self._points(self.__agents)
+        self.agents = np.random.uniform(lb, ub, (n, dimension))
+        self.points(self.agents)
 
         velocity = np.zeros((n, dimension))
         V = [V0 for i in range(n)]
 
-        Pbest = self.__agents[np.array([function(i)
-                                        for i in self.__agents]).argmin()]
-        Gbest = Pbest
+        pbest = self.agents[np.array([function(i)
+                                        for i in self.agents]
+                                    ).argmin()]
+        gbest = pbest
 
         f = fmin + (fmin - fmax)
 
         for t in range(iteration):
 
-            sol = self.__agents
+            sol = self.agents
 
             F = f * np.random.random((n, dimension))
-            velocity += (self.__agents - Gbest) * F
+            velocity += (self.agents - gbest) * F
             sol += velocity
 
             for i in range(n):
                 if random() > r[i]:
-                    sol[i] = Gbest + np.random.uniform(-1, 1, (
+                    sol[i] = gbest + np.random.uniform(-1, 1, (
                         1, dimension)) * sum(V) / n
 
             for i in range(n):
-                if function(sol[i]) < function(self.__agents[i]) \
+                if function(sol[i]) < function(self.agents[i]) \
                         and random() < V[i]:
-                    self.__agents[i] = sol[i]
+                    self.agents[i] = sol[i]
                     V[i] *= alpha
                     r[i] *= (1 - exp(-csi * t))
 
-            self.__agents = np.clip(self.__agents, lb, ub)
-            self._points(self.__agents)
+            self.agents = np.clip(self.agents, lb, ub)
+            self.points(self.agents)
 
-            Pbest = self.__agents[
-                np.array([function(x) for x in self.__agents]).argmin()]
-            if function(Pbest) < function(Gbest):
-                Gbest = Pbest
+            pbest = self.agents[np.array(
+                                    [function(x) for x in self.agents]
+                                ).argmin()]
+            if function(pbest) < function(gbest):
+                gbest = pbest
 
-        self._set_Gbest(Gbest)
+        self.set_gbest(gbest)
