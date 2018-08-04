@@ -1,10 +1,15 @@
 # Bee Algorithm
-The aim of a bee swarm is to find the area of a field with the highest density of flowers. WIthout any knoledge about a field bees begin the search of flowers from random positions with random velocity vectors. Each bee can remember positions where the maximul quantity of flowers was found and know where other bees found the maximum density of flowers. When a bee chooses between the place where it found the maximum quantity of flowers and the place which was reported by others, the bee rushes in direction between these two points and desides between personal memory and social reflex. On its way the bee can find a place with more high concentration of flowers than were found previously. In the future this place can be marked as the one with the highest concentration of flowers found by a swarm. After that the whole swarm will rush in the direction of this place, remembering though their own observations. Thus, bees research a field by flying to palces with the highest consentration of flowers. They also continuously compare places they flew over with previously found ones in order to found the absolute maxim concentration of flowers. In the end, a bee ends its flight in the place with the maximum concentration of flowers. Soon the whole swarm will locate in the neighborhood of that place.
+
+Tujuan dari kawanan lebah adalah untuk menemukan suatu area dengan kepadatan bunga tertinggi. Tanpa adanya pertikaian antara lebah tentang area mana yang akan dituju, mulailah pencarian bunga dari posisi acak dengan vektor kecepatan acak. Setiap lebah dapat mengingat posisi di mana jumlah maksimal quantity bunga ditemukan dan tahu di mana lebah lain menemukan maksimal kepadatan bunga. Ketika lebah memilih di antara tempat di mana ia menemukan jumlah maksimum bunga dan tempat yang dilaporkan oleh orang lain, lebah bergegas ke arah antara dua titik ini dan menghendaki antara ingatan pribadi dan refleks sosial. 
+
+Dalam perjalanannya, lebah dapat menemukan tempat dengan konsentrasi bunga yang lebih tinggi daripada yang ditemukan sebelumnya. Di waktu setelahnya tempat ini dapat ditandai sebagai tempat dengan konsentrasi bunga tertinggi yang ditemukan oleh kawanan. Setelah itu seluruh kawanan akan bergegas ke arah tempat ini, mengingat meskipun pengamatan mereka sendiri. Jadi, lebah melakukan penelitian di lapangan dengan terbang ke tempat dengan konsentrasi bunga tertinggi. Mereka juga terus menerus membandingkan tempat-tempat yang mereka terbangi dengan yang ditemukan sebelumnya untuk menemukan konsentrasi bunga mutlak. Pada akhirnya, seekor lebah mengakhiri penerbangannya di tempat dengan konsentrasi bunga maksimum. Segera seluruh kawanan akan mencari di sekitar tempat itu.
+
 
 ## Mathematical model
-In the Bee Algorithm model, the colony consists of three groups of bees: employed bees, onlookers and scouts. Scouts perform random search, employed bees collect previously found food and onlookers watch the dances of employed bees and choose food sources depending on dances. Onlookers and scouts are called non-working bees. Communication between bees is based on dances. Before a bee starts to collect food it watches dances of other bees. A dance is the way bees describe where food is.
 
-Working and non-working bees search for rich food sources near their hive. A working bee keeps the information about a food source and share it with onlookers. Working bees whose solutions can't be improved after a definite number of attempts become scouts and their solutions are not used after that. The number of food sources represents the nuber of solutions in the population. The position of a food source represents a possible solution to the optimization problem and the nectar amount of a food source corresponds to the quality (fitness) of the associated solution.
+Dalam Algoritma Lebah, koloni ini terdiri dari tiga kelompok lebah: lebah yang bekerja, penonton dan pengintai. Pengintai melakukan pencarian acak, lebah bekerja mengumpulkan makanan yang ditemukan sebelumnya dan penonton menonton pergerakan lebah yang bekerja dan memilih sumber makanan tergantung pada pergerakannya. Penonton dan pengintai disebut lebah yang tidak bekerja. Komunikasi antara lebah didasarkan pada pergerakan. Sebelum lebah mulai mengumpulkan makanan, mereka menyaksikan pergerakan lebah lain. Pergerakan tersebut adalah cara lebah menggambarkan dimana makanan berada.
+
+Lebah yang bekerja dan tidak bekerja mencari sumber makanan di dekat sarang mereka. Seekor lebah pekerja menyimpan informasi tentang sumber makanan dan membagikannya dengan para penonton. Lebah pekerja yang solusinya tidak dapat ditingkatkan setelah sejumlah upaya yang pasti menjadi pengintai dan solusi mereka tidak digunakan setelah itu. Jumlah sumber makanan mewakili sumber solusi dalam populasi. Posisi sumber makanan merupakan solusi yang mungkin untuk masalah optimasi dan jumlah nektar dari sumber makanan sesuai dengan kualitas (kebugaran) dari solusi yang terkait.
 
 ## Algorithm
 ```
@@ -26,10 +31,10 @@ END FOR
 Save global best
 ```
 ## Arguments
-The aba method accepts only standard arguments
+Method aba hanya bisa argument standard
 
 ## Method invocation
-The method can be invoked by passing the arguments in the following order:
+method dapat dipanggil dengan meneruskan argumen dalam urutan berikut:
 
 ```
 SwarmPackagePy.aba(n, function, lb, ub, dimension, iteration)
